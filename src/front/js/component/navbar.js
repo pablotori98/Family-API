@@ -1,19 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Box, Button, Typography } from "@mui/material";
 
+import "../../styles/index.css"
 export const Navbar = () => {
 	return (
 		<nav className="navbar navbar-light bg-light">
-			<div className="container">
-				<Link to="/">
-					<span className="navbar-brand mb-0 h1">React Boilerplate</span>
+			<Box className="container">
+				<Link className="linktitle" to="/">
+					<Box className="logoimg title"><img src="https://i.pinimg.com/originals/57/0b/be/570bbe3f6f90f39f34ca702bdbc164a4.png"/> <Typography variant="h4" className="ms-2 text-black">Jackson Family</Typography></Box>
 				</Link>
-				<div className="ml-auto">
-					<Link to="/demo">
-						<button className="btn btn-primary">Check the Context in action</button>
-					</Link>
-				</div>
-			</div>
+			</Box>
 		</nav>
 	);
 };

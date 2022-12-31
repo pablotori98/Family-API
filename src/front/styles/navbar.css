@@ -1,0 +1,19 @@
+.logoimg{
+    max-height: 100%;
+}
+
+.logoimg img{
+    max-height: 30px;
+
+}
+
+.title{
+    display: flex;
+    align-items: center;
+}
+
+.linktitle{
+    text-transform: none;
+    text-decoration: none;
+    
+}
