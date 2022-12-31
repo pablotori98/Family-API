@@ -1,19 +1,14 @@
-.logoimg{
-    max-height: 100%;
+
+.navbar{
+    background-color: rgb(255, 96, 96);
+    height: 90px;
 }
-
-.logoimg img{
-    max-height: 30px;
-
-}
-
-.title{
-    display: flex;
-    align-items: center;
-}
-
 .linktitle{
     text-transform: none;
     text-decoration: none;
     
+}
+
+.familyname{
+    color: white;
 }

@@ -1,15 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Box, Button, Typography } from "@mui/material";
-
+import Diversity2Icon from '@mui/icons-material/Diversity2';
 import "../../styles/index.css"
 export const Navbar = () => {
 	return (
-		<nav className="navbar navbar-light bg-light">
+		<nav className="navbar">
 			<Box className="container">
 				<Link className="linktitle" to="/">
-					<Box className="logoimg title"><img src="https://i.pinimg.com/originals/57/0b/be/570bbe3f6f90f39f34ca702bdbc164a4.png"/> <Typography variant="h4" className="ms-2 text-black">Jackson Family</Typography></Box>
+					<Box className="familyname">
+						{1+1==2? 
+						<Typography variant="h4"><Diversity2Icon fontSize="50px"/></Typography> 
+						: 
+						<Typography>a</Typography>}
+					</Box>
 				</Link>
+				<Box >
+					<Link className="linktitle text-white m-3"><strong>Home</strong></Link>
+					<Link className="linktitle text-white m-3"><strong>Añadir miembro</strong></Link>
+					<Link className="linktitle text-white m-3"><strong>Ver Familia</strong></Link>
+					<Link className="linktitle text-white m-3"><strong>Crear Familia</strong></Link>
+				</Box>
 			</Box>
 		</nav>
 	);

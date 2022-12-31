@@ -1,6 +1,11 @@
 /* 
     General Styles used on every website (Don't Repeat Yourself)
 */
+body{
+    background-color: rgb(68, 68, 68);
+    color: white;
+}
+
 
 @import url(navbar.css);
 @import url(footer.css);
