@@ -16,3 +16,12 @@ def handle_hello():
     }
 
     return jsonify(response_body), 200
+
+@api.route('/user', methods=['GET'])
+def get_all_users():
+    all_users = User.query.all()
+    list_users = []
+    for user in all_users:
+        list_users.append(user.serialize())
+
+    return jsonify(list_users)
