@@ -20,16 +20,33 @@ class User(db.Model):
             # do not serialize the password, its a security breach
         }
 
+
 class Family(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    first_name = db.Column(db.String(50), unique=False, nullable=False)
-    last_name = db.Column(db.String(50), unique=False, nullable=False)
-    age = db.Column(db.Integer, unique=False, nullable=False)  
-    gender = db.Column(db.String(50), unique=False, nullable=False) 
-    family_member = db.Column(db.String(50), unique=False, nullable=False)
+    last_name = db.Column(db.String(255), unique=True, nullable=False)
+    members = db.relationship('FamilyMembers', backref='Family', lazy=True)
 
     def __repr__(self):
-        return f'<Family {self.first_name}>'
+        return f'<Family {self.last_name}>'
+
+    def serialize(self):
+        return{
+            "id": self.id,
+            "last_name": self.last_name,
+            "members": [member.serialize() for member in self.members]
+    }
+
+class FamilyMembers(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    first_name = db.Column(db.String(255), unique=True, nullable=False)
+    last_name = db.Column(db.String(255), db.ForeignKey('family.last_name'))
+    age = db.Column(db.Integer(), unique=True, nullable=False)
+    gender = db.Column(db.String(255), unique=True, nullable=False)
+
+
+    def __repr__(self):
+        return f'<FamilyMembers {self.first_name}>'
+
 
     def serialize(self):
         return {
@@ -37,7 +54,5 @@ class Family(db.Model):
             "first_name": self.first_name,
             "last_name": self.last_name,
             "age": self.age,
-            "gender": self.gender,
-            "family_member": self.family_member
-            # do not serialize the password, its a security breach
-        }
+            "gender": self.gender
+        }      

@@ -20,6 +20,7 @@ export const Navbar = () => {
 					<Link className="linktitle text-white m-3"><strong>Añadir miembro</strong></Link>
 					<Link className="linktitle text-white m-3"><strong>Ver Familia</strong></Link>
 					<Link className="linktitle text-white m-3"><strong>Crear Familia</strong></Link>
+					<Link to="/login" className="linktitle text-white m-3"><strong>Login</strong></Link>
 				</Box>
 			</Box>
 		</nav>

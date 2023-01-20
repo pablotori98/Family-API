@@ -21,6 +21,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().changeColor(0, "green");
 			},
 
+			signup: (first_name, last_name, username, email, password) =>{
+
+				fetch('https://3001-4geeksacade-reactflaskh-5qood7vl12u.ws-eu80.gitpod.io/api/signup', opts)
+				opts ={
+					method: "POST",
+					headers: {
+					  "Content-Type": "application/json",
+					},
+					body: `{
+						'username': ${username},
+						'first_name': ${first_name},
+						'last_name': ${last_name},
+						'email': ${email},
+						'password': ${password}
+					}`
+
+				}
+				.then(response=> response.json())
+				.then(result=> console.log(result))
+			},
+
 			getMessage: async () => {
 				try{
 					// fetching data from the backend

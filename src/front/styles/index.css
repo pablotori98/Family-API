@@ -2,10 +2,12 @@
     General Styles used on every website (Don't Repeat Yourself)
 */
 body{
-    background-color: rgb(68, 68, 68);
+    background-color: rgb(255, 255, 255);
     color: white;
 }
 
 
 @import url(navbar.css);
 @import url(footer.css);
+@import url(signup.css);
+@import url(table.css);
