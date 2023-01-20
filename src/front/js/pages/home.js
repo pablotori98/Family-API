@@ -3,9 +3,10 @@ import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 import { TableFamily } from "../component/Table.jsx";
-import { Box, TableCell } from "@mui/material";
-import { TableHead } from '@mui/material';
-import { TableRow } from '@mui/material';
+import { Box, TableCell, Typography } from "@mui/material";
+import { TableHead } from "@mui/material";
+import { TableRow } from "@mui/material";
+import { JumbotronHome } from "../component/JumbotronHome.jsx";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
@@ -26,74 +27,53 @@ export const Home = () => {
   }, []);
   console.log(result);
 
-  const columns = [
-    { field: 'id', headerName: 'ID', width: 70 },
-    { field: 'firstName', headerName: 'First name', width: 130 },
-    { field: 'lastName', headerName: 'Last name', width: 130 },
-    {
-      field: 'age',
-      headerName: 'Age',
-      type: 'number',
-      width: 90,
-    },
-    {
-      field: 'fullName',
-      headerName: 'Full name',
-      description: 'This column has a value getter and is not sortable.',
-      sortable: false,
-      width: 160,
-      valueGetter: (params) =>
-        `${params.row.firstName || ''} ${params.row.lastName || ''}`,
-    },
-  ];
-
-
-  const rows = [
-    { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-    { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-    { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-    { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-    { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-    { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-    { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-    { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-    { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
-  ];
-
   return (
+    <>
+    {1+1==2? 
+    <JumbotronHome />
+    :
+
     <Box className="text-black container">
       {result?.map((element, index) => {
         return (
-          <div className="text-black" key={index}>
-            <h1>{element.last_name}</h1>
-              <div>
-                {element.members?.map((element2)=>{return(
-                <>
-                <table className="w-100 mb-5">
-                  <TableHead>
-                    <TableRow>
-                      <TableCell className="">First Name</TableCell>
-                      <TableCell className="">Last Name</TableCell>
-                      <TableCell className="">Age</TableCell>
-                      <TableCell className="">Gender</TableCell>
+          <Box className="text-black" key={index}>
+            <Typography variant="h3" className="my-3">Familia {element.last_name}</Typography>
+            <table className="w-100 mb-5">
+              <TableHead>
+                <TableRow>
+                  <TableCell className="tableheaderleft">
+                    <strong>First Name</strong>
+                  </TableCell>
+                  <TableCell className="tableheadercenter">
+                    <strong>Last Name</strong>
+                  </TableCell>
+                  <TableCell className="tableheadercenter">
+                    <strong>Age</strong>
+                  </TableCell>
+                  <TableCell className="tableheaderright">
+                    <strong>Gender</strong>
+                  </TableCell>
+                </TableRow>
+              </TableHead>
+              <tbody>
+                {element.members?.map((element2) => {
+                  return (
+                    <TableRow className="w-100">
+                      <TableCell>{element2.first_name}</TableCell>
+                      <TableCell>{element2.last_name}</TableCell>
+                      <TableCell>{element2.age}</TableCell>
+                      <TableCell>{element2.gender}</TableCell>
                     </TableRow>
-                  </TableHead>
-                <tbody>
-                  <TableRow>
-                    <TableCell>{element2.first_name}</TableCell>
-                    <TableCell>{element2.last_name}</TableCell>
-                    <TableCell>{element2.age}</TableCell>
-                    <TableCell>{element2.gender}</TableCell>
-                  </TableRow>
-
-                </tbody>
-                </table>                
-                </>)})}
-              </div>
-          </div>
+                  );
+                })}
+              </tbody>
+            </table>
+          </Box>
         );
       })}
     </Box>
+  }
+  </>
   );
 };
 

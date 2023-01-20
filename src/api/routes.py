@@ -8,6 +8,26 @@ from api.utils import generate_sitemap, APIException
 api = Blueprint('api', __name__)
 
 
+@api.route('/signup', methods=['POST'])
+def sign_up():
+    request_data=request.get_json(force=True)
+    if db.session.query(User).filter(User.email == request_data['email']).first():
+        return jsonify({"Mensaje":"Email registrado"})
+    if db.session.query(User).filter(User.username == request_data['username']).first():
+        return jsonify({"Mensaje": "El usuario ya esta registrado"})
+
+    nuevo_user = User(
+        username = request_data['username'],
+        first_name= request_data['first_name'],
+        last_name= request_data['last_name'],
+        email = request_data['email'],
+        password= request_data['password']
+    )
+    db.session.add(nuevo_user)
+    db.session.commit()
+
+    return jsonify({"Mensaje": "Usuario creado correctamente"})
+
 @api.route('/user', methods=['GET'])
 def get_all_users():
     all_users = User.query.all()
@@ -29,9 +49,13 @@ def get_all_members():
 
 
 
-
-
-
+@api.route('/family/<string:last_name>', methods=['GET'])
+def get_family_members(last_name):
+        family = Family.query.filter_by(last_name=last_name).first()
+        familymembers = family.members 
+        return jsonify([members.serialize() for members in familymembers]), 200
+        
+   
 
 
 

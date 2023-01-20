@@ -1,5 +1,19 @@
-.tableheader{
-    font-size: 2rem;
-    background-color: antiquewhite;
+.tableheaderleft{
+    font-size: 2.4rem;
+    background-color: #f2d2a9;
     padding: 1rem;
+    border-radius: 15px 0 0 0  ;
+}
+
+.tableheadercenter{
+    font-size: 2.4rem;
+    background-color: #f2d2a9;
+    padding: 1rem;
+}
+
+.tableheaderright{
+    font-size: 2.4rem;
+    background-color: #f2d2a9;
+    padding: 1rem;
+    border-radius: 0 15px 0 0  ;
 }

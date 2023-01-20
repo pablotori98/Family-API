@@ -40,8 +40,8 @@ class FamilyMembers(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(255), unique=True, nullable=False)
     last_name = db.Column(db.String(255), db.ForeignKey('family.last_name'))
-    age = db.Column(db.Integer(), unique=True, nullable=False)
-    gender = db.Column(db.String(255), unique=True, nullable=False)
+    age = db.Column(db.Integer(), unique=False, nullable=False)
+    gender = db.Column(db.String(255), unique=False, nullable=False)
 
 
     def __repr__(self):

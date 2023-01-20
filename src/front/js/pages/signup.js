@@ -19,7 +19,7 @@ export const Signup = () => {
     const [username, setUsername] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")  
-
+console.log(firstname, lastname, username, password)
     const handleSignUp = () =>{
       var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
@@ -39,7 +39,7 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-fetch("https://3001-4geeksacade-reactflaskh-5qood7vl12u.ws-eu81.gitpod.io/api/signup", requestOptions)
+fetch(`${process.env.BACKEND_URL}/api/signup`, requestOptions)
   .then(response => response.text())
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
