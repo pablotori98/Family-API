@@ -9,8 +9,8 @@ export const Login = () => {
   const navigate = useNavigate()
   const {actions, store} = useContext(Context)
   const onSubmit = async(values)=>{
+
    await actions.login(values.email, values.password)
-   window.location.href = "/"
   }
 
 

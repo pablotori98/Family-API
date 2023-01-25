@@ -42,7 +42,7 @@ export const Navbar = () => {
 					</Link>
 					<Button 
 				   onClick={logout} 
-					className="linktitle m-3">
+					className="linktitle m-3 text-black">
 					  <strong>Logout</strong>
 					</Button>
 				  </Box>

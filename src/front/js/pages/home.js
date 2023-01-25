@@ -12,6 +12,7 @@ export const Home = () => {
   const { store, actions } = useContext(Context);
   const [result, setResult] = useState([]);
   const token = sessionStorage.getItem("access_token");
+  sessionStorage.removeItem("sign_up")
   useEffect(() => {
     var requestOptions = {
       method: "GET",

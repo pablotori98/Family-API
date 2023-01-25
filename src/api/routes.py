@@ -43,7 +43,7 @@ def back_login():
     if  user == None:
         return jsonify({"msg": "usuario o password incorrecto"}), 401
     access_token = create_access_token(identity=user.username)
-    return jsonify({"msg":"usuario loggeado", "access_token": access_token}), 200
+    return jsonify({"msg":"usuario loggeado", "access_token": access_token, "username": user.username}), 200
 
 
 @api.route('/user', methods=['GET'])

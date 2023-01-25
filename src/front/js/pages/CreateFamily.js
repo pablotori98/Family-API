@@ -5,6 +5,7 @@ import { Box, Button, TextField, Typography } from "@mui/material";
 
 export const CreateFamily = ()=>{
     const token = sessionStorage.getItem("access_token")
+    const current_user= sessionStorage.getItem("current_user")
     const [apellido, setApellido] = useState("")
     useEffect(() => {
         var myHeaders = new Headers();
@@ -22,7 +23,7 @@ export const CreateFamily = ()=>{
           redirect: 'follow'
         };
         
-        fetch(`${process.env.BACKEND_URL}/api/createfamily/pablotori98`, requestOptions)
+        fetch(`${process.env.BACKEND_URL}/api/createfamily/${current_user}`, requestOptions)
           .then(response => response.text())
           .then(result => console.log(result))
           .catch(error => console.log('error', error));

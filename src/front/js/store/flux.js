@@ -57,9 +57,11 @@ const getState = ({ getStore, getActions, setStore }) => {
         };
         await fetch(`${process.env.BACKEND_URL}/api/login`, opts)
           .then((response) => response.json())
-          .then((result) =>
-            sessionStorage.setItem("access_token", result.access_token)
-          );
+          .then((result) =>{
+            sessionStorage.setItem("access_token", result.access_token);
+          sessionStorage.setItem("current_user", result.username);
+          window.location.href = "/"})
+
       },
 
       getMessage: async () => {
