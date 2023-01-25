@@ -19,7 +19,7 @@ export const Home = () => {
     };
 
     fetch(
-      "https://3001-4geeksacade-reactflaskh-5qood7vl12u.ws-eu83.gitpod.io/api/getfamily",
+      `${process.env.BACKEND_URL}/api/getfamily`,
       requestOptions
     )
       .then((response) => response.json())
@@ -34,7 +34,7 @@ export const Home = () => {
     <JumbotronHome />
     :
 
-    <Box className="text-black container">
+    <Box className="text-black container verfamilias">
       {result?.map((element, index) => {
         return (
           <Box className="text-black" key={index}>

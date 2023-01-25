@@ -12,6 +12,7 @@ import { Signup } from "./pages/signup";
 import { FluxSign } from "./pages/fluxsign";
 import { Login } from "./pages/login";
 import { CreateFamily } from "./pages/CreateFamily";
+import { VerFamilia } from "./pages/VerFamilia";
 
 //create your first component
 const Layout = () => {
@@ -32,6 +33,8 @@ const Layout = () => {
                         <Route element={<Login />} path="/login" />
                         <Route element={<h1>Not found!</h1>} />
                         <Route element={<CreateFamily />} path="/createfamily" />
+                        <Route element={<VerFamilia />} path="/family" />
+
                     </Routes>
                     <Footer />
                 </ScrollToTop>

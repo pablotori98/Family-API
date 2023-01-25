@@ -34,7 +34,7 @@ export const Navbar = () => {
 					<Link className="linktitle  m-3">
 					  <strong>Añadir miembro</strong>
 					</Link>
-					<Link className="linktitle  m-3">
+					<Link to="/family" className="linktitle  m-3">
 					  <strong>Ver Familia</strong>
 					</Link>
 					<Link to="/createfamily" className="linktitle  m-3">
@@ -73,7 +73,7 @@ export const Navbar = () => {
 					<Link to="/" className="linktitle  m-3">
 					  <strong>Home</strong>
 					</Link>
-					<Link className="linktitle  m-3">
+					<Link to="/signup" className="linktitle  m-3">
 					  <strong>Registro</strong>
 					</Link>
 					<Link to="/login" className="linktitle m-3">
