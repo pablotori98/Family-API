@@ -2,12 +2,15 @@ import { TouchAppRounded } from "@mui/icons-material";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import { useFormik } from "formik";
 import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const Login = () => {
+  const navigate = useNavigate()
   const {actions, store} = useContext(Context)
   const onSubmit = async(values)=>{
    await actions.login(values.email, values.password)
+   window.location.href = "/"
   }
 
 

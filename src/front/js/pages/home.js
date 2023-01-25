@@ -11,6 +11,7 @@ import { JumbotronHome } from "../component/JumbotronHome.jsx";
 export const Home = () => {
   const { store, actions } = useContext(Context);
   const [result, setResult] = useState([]);
+  const token = sessionStorage.getItem("access_token")
   useEffect(() => {
     var requestOptions = {
       method: "GET",
@@ -29,7 +30,7 @@ export const Home = () => {
 
   return (
     <>
-    {1+1==2? 
+    {!token? 
     <JumbotronHome />
     :
 
