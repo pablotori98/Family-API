@@ -10,8 +10,8 @@
     justify-content: center;
     align-items: center;
     width: 70vw;
-    height: 40vw;
-    background-color: white;
+    height: 65vh;
+    background: linear-gradient(90deg, rgba(66,254,255,0.2) 0%, rgba(255,236,160,0.2) 29%, rgba(255,195,160,0.2) 54%, rgba(255,195,160,0.2) 84%, rgba(252,176,69,0.2) 100%);
     border-radius: 15px;
     box-shadow: 10px 10px 5px #aaaaaa;
 

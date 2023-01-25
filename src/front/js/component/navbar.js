@@ -16,7 +16,7 @@ export const Navbar = () => {
 					</Box>
 				</Link>
 				<Box >
-					<Link className="linktitle  m-3"><strong>Home</strong></Link>
+					<Link to="/" className="linktitle  m-3"><strong>Home</strong></Link>
 					<Link className="linktitle  m-3"><strong>Añadir miembro</strong></Link>
 					<Link className="linktitle  m-3"><strong>Ver Familia</strong></Link>
 					<Link className="linktitle  m-3"><strong>Crear Familia</strong></Link>
