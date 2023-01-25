@@ -3,11 +3,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 
-export const JumbotronHome = () =>{
+export const JumbotronHome = ({text, button, link}) =>{
     return (
         <Box className="jumbotron">
-            <Typography variant="h2" className="">Gestiona tu árbol genealógico</Typography>
-            <Link to="/signup" className="textdecoration"><Button className="glow-on-hover my-5 text-white"><strong>Crea tu cuenta</strong></Button></Link>
+            <Typography variant="h2" className="">{text}</Typography>
+            <Link to={link} className="textdecoration"><Button className="glow-on-hover my-5 text-white"><strong>{button}</strong></Button></Link>
 
         </Box>
     )
