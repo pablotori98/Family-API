@@ -42,7 +42,7 @@ def back_login():
     user = User.query.filter_by(email=email, password=password).first()
     if  user == None:
         return jsonify({"msg": "usuario o password incorrecto"}), 401
-    access_token = create_access_token(identity=user.id)
+    access_token = create_access_token(identity=user.username)
     return jsonify({"msg":"usuario loggeado", "access_token": access_token}), 200
 
 
@@ -66,6 +66,22 @@ def get_all_members():
     return jsonify(list_family)
 
 
+@api.route('/createfamily/<string:username_var>', methods=['POST'])
+@jwt_required()
+def create_family(username_var):
+    user = get_jwt_identity()
+    if user != username_var:
+        return jsonify({"Access Denied"})
+    request_data = request.get_json(force=True)
+    user = db.session.query(User).filter(User.username == username_var).first()
+    
+    new_family = Family(
+        last_name= request_data['last_name'],
+    )
+    db.session.add(new_family)
+    db.session.commit()
+
+    return jsonify({"msg":"Familia creada"})
 
 @api.route('/family/<string:last_name>', methods=['GET'])
 def get_family_members(last_name):

@@ -39,7 +39,7 @@ export const Home = () => {
             <JumbotronHome
               text="Crea tu propia familia"
               button="Crea tu familia"
-              link="/crearfamilia"
+              link="/createfamily"
             />
           ) : (
             <Box className="text-black container verfamilias">
