@@ -26,8 +26,8 @@ export const CreateFamily = ()=>{
           redirect: 'follow'
         };
         await fetch(`${process.env.BACKEND_URL}/api/createfamily/${current_user}`, requestOptions)
-          .then(response => response.text())
-          .then(result => console.log(result))
+          .then(response => response.json())
+          .then(result => sessionStorage.setItem("Familia_creada", "Familia creada exitosamente"))
           .catch(error => console.log('error', error));
     }
 

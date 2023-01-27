@@ -1,5 +1,5 @@
 //Import react
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 //Import material
 import {
   Box,
@@ -12,18 +12,33 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-
 import tree from "../../img/treee.jpg";
 import { array } from "prop-types";
+import { Context } from "../store/appContext";
 
 export const AddMember = () => {
   const token = sessionStorage.getItem("access_token");
   const current_user = sessionStorage.getItem("current_user");
+  const { store, actions } = useContext(Context);
   const [familia, setFamilia] = useState("");
   const [first_name, setFirst_name] = useState("");
   const [age, setAge] = useState("");
+  const [gender, setGender] = useState("");
+  const [result, setResult] = useState([]);
+  console.log(result)
+  useEffect(() => {
+    var requestOptions = {
+      method: "GET",
+      redirect: "follow",
+    };
 
-  const funcionllamada = async () => {
+    fetch(`${process.env.BACKEND_URL}/api/getfamily`, requestOptions)
+      .then((response) => response.json())
+      .then((resultado) => setResult(resultado))
+      .catch((error) => console.log("error", error));
+  }, []);
+
+  const addmembersfetch = async () => {
     var myHeaders = new Headers();
     myHeaders.append(
       "Authorization",
@@ -32,7 +47,10 @@ export const AddMember = () => {
     myHeaders.append("Content-Type", "application/json");
 
     var raw = JSON.stringify({
-      last_name: apellido,
+      first_name: first_name,
+      age: age,
+      gender: gender,
+      last_name: familia,
     });
 
     var requestOptions = {
@@ -41,11 +59,12 @@ export const AddMember = () => {
       body: raw,
       redirect: "follow",
     };
-    await fetch(
-      `${process.env.BACKEND_URL}/api/createfamily/${current_user}`,
+
+    fetch(
+      `${process.env.BACKEND_URL}/api/createfamilymember/${current_user}/${familia}`,
       requestOptions
     )
-      .then((response) => response.text())
+      .then((response) => response.json())
       .then((result) => console.log(result))
       .catch((error) => console.log("error", error));
   };
@@ -53,6 +72,7 @@ export const AddMember = () => {
   console.log("familia", familia);
   console.log("first name", first_name);
   console.log("age", age);
+  console.log("gender", gender);
   let ageArray = [];
   for (let i = 0; i <= 100; i++) {
     ageArray.push(i);
@@ -74,8 +94,9 @@ export const AddMember = () => {
               <option selected hidden>
                 Elige tu familia
               </option>
-              <option >Jose</option>
-              <option>pablo</option>
+              {result?.map((element) => {
+                return <option>{element.last_name}</option>;
+              })}
             </select>
 
             <TextField
@@ -112,7 +133,7 @@ export const AddMember = () => {
 
             <Button
               className="glow-on-hover text-white"
-              onClick={funcionllamada}
+              onClick={addmembersfetch}
             >
               <strong>Crear Familia</strong>
             </Button>

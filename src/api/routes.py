@@ -65,6 +65,16 @@ def get_all_members():
         
     return jsonify(list_family)
 
+@api.route('/lastname', methods=['GET'])
+def get_all_lastnames():
+    get_family =Family.last_name.query.all({last_name})
+    list_family = []
+    for family in get_family:
+        list_family.append(family.serialize())
+        
+    return jsonify(list_family)
+
+
 
 @api.route('/createfamily/<string:username_var>', methods=['POST'])
 @jwt_required()
@@ -82,6 +92,30 @@ def create_family(username_var):
     db.session.commit()
 
     return jsonify({"msg":"Familia creada"})
+
+@api.route('/createfamilymember/<string:username_var>/<string:family>', methods=['POST'])
+@jwt_required()
+def create_member(username_var, family):
+    user = get_jwt_identity()
+    if user != username_var:
+        return jsonify({"Access Denied"})
+    request_data = request.get_json(force=True)
+    user = db.session.query(FamilyMembers).filter(FamilyMembers.last_name == family).first()
+    
+    new_member = FamilyMembers(
+        first_name= request_data['first_name'],
+        age= request_data['age'],
+        gender = request_data['gender'],
+        last_name= request_data['last_name']
+
+    )
+    db.session.add(new_member)
+    db.session.commit()
+
+    return jsonify({"msg":"Miembro creado"})
+
+
+
 
 @api.route('/family/<string:last_name>', methods=['GET'])
 def get_family_members(last_name):

@@ -3,10 +3,11 @@ import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 import { TableFamily } from "../component/Table.jsx";
-import { Box, TableCell, Typography } from "@mui/material";
+import { Box, Button, TableCell, Typography } from "@mui/material";
 import { TableHead } from "@mui/material";
 import { TableRow } from "@mui/material";
 import { JumbotronHome } from "../component/JumbotronHome.jsx";
+import { Link } from "react-router-dom";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
@@ -36,13 +37,18 @@ export const Home = () => {
         />
       ) : (
         <>
-          {1+1==2 ? (
+          {sessionStorage.getItem("familia_creada") ? (
             <JumbotronHome
               text="Crea tu propia familia"
               button="Crea tu familia"
               link="/createfamily"
             />
           ) : (
+            <>
+            <Box className="headerhomefamily">
+            <Typography variant="h2" className="">Añade tantas familias como quieras</Typography>
+            <Link to="/createfamily" className="textdecoration"><Button className="glow-on-hover my-5 text-white"><strong>Añadir Familia</strong></Button></Link>
+            </Box>
             <Box className="text-black container verfamilias">
               {result?.map((element, index) => {
                 return (
@@ -84,6 +90,7 @@ export const Home = () => {
                 );
               })}
             </Box>
+            </>
           )}
         </>
       )}

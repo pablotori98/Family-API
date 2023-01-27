@@ -1,6 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
+      familias: [],
       message: null,
       demo: [
         {
@@ -19,6 +20,18 @@ const getState = ({ getStore, getActions, setStore }) => {
       // Use getActions to call a function within a fuction
       exampleFunction: () => {
         getActions().changeColor(0, "green");
+      },
+
+      getfamily: () =>{
+        fetch(`${process.env.BACKEND_URL}/api/getfamily`, opts)
+        opts = {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+        .then((response)=> response.json())
+        .then((result)=> setStore({ familias: result}))
       },
 
       signup: (first_name, last_name, username, email, password) => {

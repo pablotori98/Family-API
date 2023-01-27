@@ -11,9 +11,10 @@ import { ErrorSharp, MarkEmailUnread } from "@mui/icons-material";
 import { Context } from "../store/appContext";
 import { signupSchema } from "../esquemas";
 import * as Yup from "yup"
+import { Navigate, useNavigate } from "react-router-dom";
 export const Signup = () => {
     const {actions, store} = useContext(Context)
-        
+      const navigate = useNavigate()
 
     const [firstname, setFirstName] = useState("")
     const [lastname, setLastName] = useState("")
@@ -45,13 +46,16 @@ console.log(firstname, lastname, username, password)
         .then(response => {
           if (response==200){
             response.json()
+
           }
           else if (response == 400){
             sessionStorage.setItem("error_signup", "Registro erroneo, intentelo de nuevo")
           }
         })
         .then(result => console.log(result))
-        .then(result=> sessionStorage.setItem("sign_up", "Registro completado correctamente"))
+        .then(result=> {sessionStorage.setItem("sign_up", "Registro completado correctamente");
+        navigate("/")
+      })
         .catch(error => console.log('error', error));
     }
 
