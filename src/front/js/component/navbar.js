@@ -31,7 +31,7 @@ export const Navbar = () => {
 					<Link to="/" className="linktitle  m-3">
 					  <strong>Home</strong>
 					</Link>
-					<Link className="linktitle  m-3">
+					<Link to="/addmember" className="linktitle  m-3">
 					  <strong>Añadir miembro</strong>
 					</Link>
 					<Link to="/family" className="linktitle  m-3">
