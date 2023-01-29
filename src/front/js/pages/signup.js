@@ -62,7 +62,7 @@ console.log(firstname, lastname, username, password)
   return (
     <Box className="background">
       <Box className="card">
-        <Typography variant="h3" className="text-black text-center mb-5">
+        <Typography variant="h3" className="text-black text-center mb-3">
           Registrate
         </Typography>
         <Box className="d-flex flex-column justify-content-center align-items-center inputsector mb-5">
@@ -71,30 +71,30 @@ console.log(firstname, lastname, username, password)
               <TextField
                 id="standard-basic"
                 label="Nombre"
-                variant="standard"
-                className="w-100 m-2"
+                variant="outlined"
+                className="w-100 mx-2 mt-3"
                 onChange={(event)=>setFirstName(event.target.value)}
               />
               <TextField
                 id="standard-basic"
                 label="Apellidos"
-                variant="standard"
-                className="w-100 m-2"
+                variant="outlined"
+                className="w-100 mx-2 mt-3"
                 onChange={(event)=>setLastName(event.target.value)}
 
               />
               <TextField
                 id="standard-basic"
                 label="Usuario"
-                variant="standard"
-                className="w-100 m-2"
+                variant="outlined"
+                className="w-100 mx-2 mt-3"
                 onChange={(event)=>setUsername(event.target.value)}
 
               />
               <TextField
                 id="standard-basic"
                 label="Email"
-                variant="standard"
+                variant="outlined"
                 className="w-100 mx-2 mt-3"
                 onChange={(event)=>setEmail(event.target.value)}
               />
@@ -102,7 +102,7 @@ console.log(firstname, lastname, username, password)
                 id="standard-basic"
                 type="password"
                 label="Contraseña"
-                variant="standard"
+                variant="outlined"
                 className="w-100 mx-2 mt-3"
                 onChange={(event)=>setPassword(event.target.value)}
               />

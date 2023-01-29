@@ -16,6 +16,11 @@
     height: 100px;
 }
 
+
 .rrsslogos{
     color: #000000;
+    text-decoration: none !important;}
+
+.rrsslogos:hover{
+    color: white;
 }

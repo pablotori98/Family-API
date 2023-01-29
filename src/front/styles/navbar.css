@@ -9,6 +9,10 @@
     color:#000000;
     
 }
+.linktitle:hover{
+
+    color: white;
+}
 
 .familyname{
     color: #000000;

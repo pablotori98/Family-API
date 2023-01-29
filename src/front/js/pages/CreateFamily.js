@@ -4,12 +4,13 @@ import React, { useEffect, useState } from "react";
 import { Box, Button, InputAdornment, TextField, Typography } from "@mui/material";
 
 import tree from "../../img/treee.jpg"
+import { useNavigate } from "react-router-dom";
 
 export const CreateFamily = ()=>{
     const token = sessionStorage.getItem("access_token")
     const current_user= sessionStorage.getItem("current_user")
     const [apellido, setApellido] = useState("")
-   
+   const navigate = useNavigate()
     const funcionllamada = async () =>{
         var myHeaders = new Headers();
         myHeaders.append("Authorization",  `Bearer ${sessionStorage.getItem("access_token")}`);
@@ -27,7 +28,9 @@ export const CreateFamily = ()=>{
         };
         await fetch(`${process.env.BACKEND_URL}/api/createfamily/${current_user}`, requestOptions)
           .then(response => response.json())
-          .then(result => sessionStorage.setItem("Familia_creada", "Familia creada exitosamente"))
+          .then(result => {sessionStorage.setItem("Familia_creada", "Familia creada exitosamente");
+        navigate("/addmember")
+        })
           .catch(error => console.log('error', error));
     }
 

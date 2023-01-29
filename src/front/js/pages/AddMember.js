@@ -15,6 +15,7 @@ import {
 import tree from "../../img/treee.jpg";
 import { array } from "prop-types";
 import { Context } from "../store/appContext";
+import { Navigate, useNavigate } from "react-router-dom";
 
 export const AddMember = () => {
   const token = sessionStorage.getItem("access_token");
@@ -25,6 +26,7 @@ export const AddMember = () => {
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
   const [result, setResult] = useState([]);
+  const navigate = useNavigate()
   console.log(result)
   useEffect(() => {
     var requestOptions = {
@@ -65,7 +67,7 @@ export const AddMember = () => {
       requestOptions
     )
       .then((response) => response.json())
-      .then((result) => console.log(result))
+      .then((result) => navigate("/family"))
       .catch((error) => console.log("error", error));
   };
 
